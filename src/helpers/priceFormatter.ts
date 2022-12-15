@@ -1,7 +1,11 @@
-export const numberToPriceFormatter = (price: number): string => {
-	const rez = Intl.NumberFormat('en-US', {
+export const numberToPriceFormatter = (
+	price: number,
+	locales: string,
+	currency: string
+): string => {
+	const rez = Intl.NumberFormat(locales, {
 		style: 'currency',
-		currency: 'USD',
+		currency: currency,
 		maximumFractionDigits: 2,
 		compactDisplay: 'short'
 	}).format(price)

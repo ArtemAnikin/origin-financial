@@ -1,11 +1,13 @@
+@import "styles/globalStyles.scss";
+
 .title{
   font-family: 'Work Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  color: #1E2A32;
 
+  color: $textColorDarkBlue;
   text-align: start;
   margin: 0;
 
@@ -26,8 +28,8 @@
 
   & .input{
     box-sizing: border-box;
-    background: #FFFFFF;
-    border: 1px solid #E9EEF2;
+    background: $white;
+    border: 1px solid $borderColor;
     border-radius: 4px;
     padding-left: 44px;
     width: 100%;
@@ -39,7 +41,7 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 120%;
-    color: #4D6475;
+    color: $inputTextColor;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -48,7 +50,7 @@
     }
 
     &:focus{
-      border: 2px solid mediumblue!important;
+      border: 2px solid $focusColor
     }
   }
 }

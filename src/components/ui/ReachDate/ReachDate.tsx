@@ -8,8 +8,7 @@ import rightArrow from 'assets/arrow-right.svg'
 
 import styles from './ReachDate.module.scss'
 
-export interface IReachDateProps
-	extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IReachDateProps {
 	label: string
 	changeNumberOfMonth: (month: number) => void
 }
@@ -25,7 +24,7 @@ const ReachDate: FC<IReachDateProps> = ({ changeNumberOfMonth, label }) => {
 	const rightArrowBtn = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
-		wrapperRef.current?.focus()
+		const refWrapper = wrapperRef.current
 		const handlerArrows = (event: any) => {
 			switch (event.key) {
 				case 'ArrowRight':
@@ -37,24 +36,24 @@ const ReachDate: FC<IReachDateProps> = ({ changeNumberOfMonth, label }) => {
 			}
 		}
 
-		wrapperRef.current?.addEventListener('keydown', handlerArrows)
+		refWrapper?.addEventListener('keydown', handlerArrows)
 
 		return () => {
-			wrapperRef.current?.removeEventListener('keydown', handlerArrows)
+			refWrapper?.removeEventListener('keydown', handlerArrows)
 		}
 	}, [month, wrapperRef])
 
-	const handleMonthInc = () => {
+	const handleMonthInc = (): void => {
 		changeMonth(12, 1)
 	}
 
-	const handleMonthDec = () => {
+	const handleMonthDec = (): void => {
 		if (currentYear !== year || currentMonth !== month) {
 			changeMonth(1, -1)
 		}
 	}
 
-	const changeMonth = (condition: number, value: number) => {
+	const changeMonth = (condition: number, value: number): void => {
 		if (month === condition) {
 			setYear(year + value)
 			setMonth(condition === 12 ? 1 : 12)
@@ -66,7 +65,9 @@ const ReachDate: FC<IReachDateProps> = ({ changeNumberOfMonth, label }) => {
 
 	return (
 		<>
-			<div className={styles.title}>{label}</div>
+			<div className={styles.title} data-testid='label'>
+				{label}
+			</div>
 			<div
 				className={styles.wrapper}
 				ref={wrapperRef}
@@ -80,7 +81,7 @@ const ReachDate: FC<IReachDateProps> = ({ changeNumberOfMonth, label }) => {
 				>
 					<img src={leftArrow} alt='left arrow' />
 				</button>
-				<div className={styles.date}>
+				<div className={styles.date} data-testid='date'>
 					<p>{monthFormatter(month)}</p>
 					<p className={styles.year}>{year}</p>
 				</div>

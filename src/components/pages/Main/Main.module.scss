@@ -1,5 +1,6 @@
+@import "styles/globalStyles.scss";
+
 strong{
-  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
   font-family: 'Rubik', sans-serif;
   font-style: normal;
 }
@@ -19,7 +20,7 @@ strong{
     font-size: 20px;
     line-height: 120%;
 
-    color: #1B31A8;
+    color: $textColorBlue;
     max-width: 560px;
     text-align: center;
 

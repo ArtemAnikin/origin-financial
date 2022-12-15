@@ -2,16 +2,12 @@ import React, { FC } from 'react'
 
 import styles from './Button.module.scss'
 
-interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps {
 	children: React.ReactNode
 }
 
-const Button: FC<IButtonProps> = ({ children, ...props }) => {
-	return (
-		<button className={styles.button} {...props}>
-			{children}
-		</button>
-	)
+const Button: FC<IButtonProps> = ({ children }) => {
+	return <button className={styles.button}>{children}</button>
 }
 
 export default Button

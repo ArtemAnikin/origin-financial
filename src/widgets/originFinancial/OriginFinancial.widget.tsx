@@ -6,6 +6,8 @@ import ReachDate from 'components/ui/ReachDate/ReachDate'
 
 import TotalAmount from 'widgets/originFinancial/components/TotalAmount/TotalAmount'
 
+import { CURRENCY_ENUM, ICurrency, currencyInfo } from 'enums/currencyEnum'
+
 import houseImg from 'assets/icons/buy-a-house.svg'
 
 import styles from './OriginFinancial.module.scss'
@@ -13,6 +15,8 @@ import styles from './OriginFinancial.module.scss'
 const OriginFinancialWidget: FC = () => {
 	const [currentPrice, setCurrentPrice] = useState(10)
 	const [month, setMonth] = useState(0)
+
+	const currency: ICurrency = currencyInfo[CURRENCY_ENUM.USD]
 
 	const changeNumberOfMonth = useCallback(
 		(value: number) => {
@@ -34,6 +38,7 @@ const OriginFinancialWidget: FC = () => {
 			<div className={styles.controls}>
 				<div className={styles.totalAmount}>
 					<Amount
+						currentCurrency={currency}
 						label='Total amount'
 						value={currentPrice}
 						onChangeValue={setCurrentPrice}
@@ -48,7 +53,12 @@ const OriginFinancialWidget: FC = () => {
 				</div>
 			</div>
 
-			<TotalAmount currentPrice={currentPrice} numberOfMonth={month} />
+			<TotalAmount
+				label='Monthly amount'
+				currentPrice={currentPrice}
+				numberOfMonth={month}
+				currentCurrency={currency}
+			/>
 
 			<div className={styles.submit}>
 				<Button>Confirm</Button>

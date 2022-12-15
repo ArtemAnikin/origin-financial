@@ -28,8 +28,9 @@
       "components/ui/*": ["components/ui/*"],
       "components/pages/*": ["components/pages/*"],
 
+      "enums/*": ["enums/*"],
       "helpers/*": ["helpers/*"],
-      "test/*": ["test/*"],
+      "styles/*": ["styles/*"],
       "types/*": ["types/*"],
       "widgets/*": ["widgets/*"]
     }

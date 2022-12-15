@@ -1,4 +1,6 @@
-import React, { FC, memo, useEffect, useState } from 'react'
+import React, { FC, memo, useState } from 'react'
+
+import { ICurrency } from 'enums/currencyEnum'
 
 import {
 	priceToNumber,
@@ -6,37 +8,34 @@ import {
 	validatePrice
 } from 'helpers/priceFormatter'
 
-import dollar from 'assets/dollar-sign.svg'
-
 import styles from './Amount.module.scss'
 
-export interface IAmountProps
-	extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface IAmountProps {
 	value: number
 	label: string
+	currentCurrency: ICurrency
 	onChangeValue: (value: number) => void
 }
 
 const Amount: FC<IAmountProps> = ({
+	currentCurrency,
 	value,
 	onChangeValue,
-	label,
-	...props
+	label
 }) => {
-	const [stringValue, setStringValue] = useState(String(value))
+	const price = validatePrice(String(value))
+	const [stringValue, setStringValue] = useState(price)
+	//const currency = currencyInfo.
 
-	useEffect(() => {
-		onBlur()
-	}, [])
-
-	const onBlur = () => {
+	const onBlur = (): void => {
 		setStringValue(validatePrice(stringValue))
 	}
 
-	const changeValue = (event: any) => {
-		const rez = event.target.value
+	const changeValue = (event: any): void => {
+		const rez = event.target.value.replaceAll(',', '')
 
-		if (/^\d+(\.?)+(\d{1,2})?$/.test(String(priceToNumber(rez)))) {
+		//only 2 numbers after '.'
+		if (/^(\d?)+(\.?)+(\d{1,2})?$/.test(rez)) {
 			setStringValue(stringToPriceFormatter(rez))
 			onChangeValue(priceToNumber(rez))
 		}
@@ -46,11 +45,14 @@ const Amount: FC<IAmountProps> = ({
 		<>
 			<div className={styles.title}>{label}</div>
 			<div className={styles.wrapper} data-testid='amount'>
-				<img src={dollar} alt='' data-testid='amount-currency-symbol-USD' />
+				<img
+					src={currentCurrency.image}
+					alt=''
+					data-testid='amount-currency-symbol'
+				/>
 				<input
 					onBlur={onBlur}
 					className={styles.input}
-					{...props}
 					type='text'
 					data-testid='amount-input'
 					placeholder='0.00'

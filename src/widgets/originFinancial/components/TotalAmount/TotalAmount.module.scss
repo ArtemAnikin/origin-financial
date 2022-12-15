@@ -1,9 +1,11 @@
+@import 'styles/globalStyles.scss';
+
 .wrapper{
   height: 155px;
-  background: #FFFFFF;
+  background: $white;
   border-radius: 8px;
   padding: 0 32px;
-  border: 1px solid #E9EEF2;
+  border: 1px solid $borderColor;
   position: relative;
   box-sizing: border-box;
   margin-bottom: 32px;
@@ -20,7 +22,7 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 120%;
-      color: #1E2A32;
+      color: $textColorDarkBlue;
     }
 
     & .price{

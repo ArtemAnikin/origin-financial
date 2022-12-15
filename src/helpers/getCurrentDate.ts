@@ -1,10 +1,12 @@
-export const getCurrentDate = () => {
-	const today = new Date()
-	const currentMonth = today.getMonth() + 1 //January is 0!
-	const currentYear = today.getFullYear()
+interface ICurrentDate {
+	currentMonth: number
+	currentYear: number
+}
 
+export const getCurrentDate = (): ICurrentDate => {
+	const today = new Date()
 	return {
-		currentMonth,
-		currentYear
+		currentMonth: today.getMonth() + 1, //January is 0!
+		currentYear: today.getFullYear()
 	}
 }

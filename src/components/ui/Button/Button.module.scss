@@ -1,5 +1,7 @@
+@import "styles/globalStyles.scss";
+
 .button{
-  background: #1B31A8;
+  background: $textColorBlue;
   border-radius: 32px;
   width: 320px;
   height: 56px;
@@ -10,7 +12,7 @@
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  color: #FFFFFF;
+  color: $white;
 
   &:hover{
     cursor: pointer;

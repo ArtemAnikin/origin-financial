@@ -1,8 +1,10 @@
+@import "styles/globalStyles.scss";
+
 .wrapper{
   box-sizing: border-box;
   margin-top: 24px;
   max-width: 560px;
-  background-color: #FFFFFF;
+  background-color: $white;
   padding: 40px;
   color: black;
 

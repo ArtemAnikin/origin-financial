@@ -3,8 +3,13 @@ import { render } from '@testing-library/react'
 
 import Amount, { IAmountProps } from 'components/ui/Amount/Amount'
 
+import { ICurrency, currencyInfo } from 'enums/currencyEnum'
+
 describe('ui->Amount', () => {
+	const currency: ICurrency = currencyInfo[0]
+
 	const props: IAmountProps = {
+		currentCurrency: currency,
 		value: 0,
 		label: 'Some label',
 		onChangeValue: i => i
@@ -12,6 +17,7 @@ describe('ui->Amount', () => {
 	const renderComponent = () =>
 		render(
 			<Amount
+				currentCurrency={props.currentCurrency}
 				label={props.label}
 				value={props.value}
 				onChangeValue={props.onChangeValue}
@@ -25,7 +31,7 @@ describe('ui->Amount', () => {
 
 	it('should render provided currency symbol', async () => {
 		const view: any = await renderComponent()
-		expect(view.getByTestId('amount-currency-symbol-USD')).toBeInTheDocument()
+		expect(view.getByTestId('amount-currency-symbol')).toBeInTheDocument()
 	})
 
 	it('should render provided label', async () => {

@@ -1,10 +1,12 @@
+@import "styles/globalStyles.scss";
+
 .title{
   font-family: 'Work Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  color: #1E2A32;
+  color: $textColorDarkBlue;
 
   text-align: start;
   margin: 0;
@@ -14,8 +16,8 @@
   .wrapper{
     box-sizing: border-box;
     width: 192px;
-    background: #FFFFFF;
-    border: 1px solid #E9EEF2;
+    background: $white;
+    border: 1px solid $borderColor;
     border-radius: 4px;
     display: flex;
     text-decoration: none;
@@ -26,7 +28,7 @@
     outline: none;
 
     &:focus{
-      border: 2px solid mediumblue!important;
+      border: 2px solid $focusColor;
     }
 
 
@@ -38,7 +40,7 @@
         font-size: 16px;
         line-height: 150%;
         text-align: center;
-        color: #1E2A32;
+        color: $textColorDarkBlue;
         margin: 0;
       }
       & .year{
